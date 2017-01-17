@@ -11,9 +11,13 @@ using System.Windows.Forms;
 
 namespace SparkasseCSVexportParser {
     public partial class Form1 : Form {
+
+        List<SparkasseEntry> list;
+
         public Form1 () {
             InitializeComponent();
             lvData.View = View.Details;
+            list = new List<SparkasseEntry>();
         }
 
         private void btnOpenFile_Click ( object sender, EventArgs e ) {
@@ -29,11 +33,13 @@ namespace SparkasseCSVexportParser {
         private void parseCSVFile ( string path ) {
             string[] lines = File.ReadAllLines( path );
 
-
+            for ( int i = 1; i < lines.Length; i++ ) {
+                list.Add( new SparkasseEntry( lines[i] ) );
+            }
 
             lvData.Clear();
             setListViewHeader( lines[0] );
-            setListData( lines );
+            setListData( list );
         }
 
         private void setListData ( string[] lines ) {
@@ -44,7 +50,29 @@ namespace SparkasseCSVexportParser {
                     c[j] = c[j].Remove( 0, 1 );
                     c[j] = c[j].Remove( c[j].Length - 1 );
                 }
-                lvi = new ListViewItem(c);
+                lvi = new ListViewItem( c );
+                lvData.Items.Add( lvi );
+            }
+        }
+
+        private void setListData ( List<SparkasseEntry> sparkasseEntryList ) {
+            ListViewItem lvi;
+            foreach ( var item in sparkasseEntryList ) {
+                lvi = new ListViewItem( new string[] {
+                        item.Auftragskonto.ToString(),
+                        item.Buchungstag,
+                        item.Valutadatum,
+                        item.Buchungstext,
+                        item.Verwendungszweck,
+                        item.Beguenstigter_Zahlungspflichtiger,
+                        item.Kontonummer,
+                        item.Bankleitzahl,
+                        item.Betrag.ToString( "0.00", new System.Globalization.CultureInfo( "de-DE" )),
+                        item.Waehrung,
+                        item.Information
+                    }
+                );
+
                 lvData.Items.Add( lvi );
             }
         }
@@ -59,6 +87,10 @@ namespace SparkasseCSVexportParser {
 
         private void btnExit_Click ( object sender, EventArgs e ) {
             Environment.Exit( Environment.ExitCode );
+        }
+
+        private void btnSearchOccurrences_Click ( object sender, EventArgs e ) {
+
         }
     }
 }

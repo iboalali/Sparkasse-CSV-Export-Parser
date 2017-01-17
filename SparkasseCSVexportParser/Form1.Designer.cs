@@ -27,6 +27,7 @@
             this.btnOpenFile = new System.Windows.Forms.Button();
             this.txtFileName = new System.Windows.Forms.TextBox();
             this.lvData = new System.Windows.Forms.ListView();
+            this.btnSearchOccurrences = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnExit
@@ -72,17 +73,28 @@
             this.lvData.UseCompatibleStateImageBehavior = false;
             this.lvData.View = System.Windows.Forms.View.Details;
             // 
+            // btnSearchOccurrences
+            // 
+            this.btnSearchOccurrences.Location = new System.Drawing.Point(12, 578);
+            this.btnSearchOccurrences.Name = "btnSearchOccurrences";
+            this.btnSearchOccurrences.Size = new System.Drawing.Size(165, 23);
+            this.btnSearchOccurrences.TabIndex = 4;
+            this.btnSearchOccurrences.Text = "Search for All Occurrences";
+            this.btnSearchOccurrences.UseVisualStyleBackColor = true;
+            this.btnSearchOccurrences.Click += new System.EventHandler(this.btnSearchOccurrences_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(918, 613);
+            this.Controls.Add(this.btnSearchOccurrences);
             this.Controls.Add(this.lvData);
             this.Controls.Add(this.txtFileName);
             this.Controls.Add(this.btnOpenFile);
             this.Controls.Add(this.btnExit);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Sparkasse ";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -94,6 +106,7 @@
         private System.Windows.Forms.Button btnOpenFile;
         private System.Windows.Forms.TextBox txtFileName;
         private System.Windows.Forms.ListView lvData;
+        private System.Windows.Forms.Button btnSearchOccurrences;
     }
 }
 
