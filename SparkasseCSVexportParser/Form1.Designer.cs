@@ -33,22 +33,22 @@
             // btnExit
             // 
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExit.Location = new System.Drawing.Point(831, 578);
+            this.btnExit.Location = new System.Drawing.Point(811, 578);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(75, 23);
+            this.btnExit.Size = new System.Drawing.Size(95, 23);
             this.btnExit.TabIndex = 0;
-            this.btnExit.Text = "Exit";
+            this.btnExit.Text = "Beenden";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnOpenFile
             // 
             this.btnOpenFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOpenFile.Location = new System.Drawing.Point(831, 12);
+            this.btnOpenFile.Location = new System.Drawing.Point(811, 12);
             this.btnOpenFile.Name = "btnOpenFile";
-            this.btnOpenFile.Size = new System.Drawing.Size(75, 23);
+            this.btnOpenFile.Size = new System.Drawing.Size(95, 23);
             this.btnOpenFile.TabIndex = 1;
-            this.btnOpenFile.Text = "Open File";
+            this.btnOpenFile.Text = "Datei Öffnen";
             this.btnOpenFile.UseVisualStyleBackColor = true;
             this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
             // 
@@ -56,9 +56,10 @@
             // 
             this.txtFileName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFileName.Enabled = false;
             this.txtFileName.Location = new System.Drawing.Point(12, 14);
             this.txtFileName.Name = "txtFileName";
-            this.txtFileName.Size = new System.Drawing.Size(813, 20);
+            this.txtFileName.Size = new System.Drawing.Size(793, 20);
             this.txtFileName.TabIndex = 2;
             // 
             // lvData
@@ -77,9 +78,9 @@
             // 
             this.btnSearchOccurrences.Location = new System.Drawing.Point(12, 578);
             this.btnSearchOccurrences.Name = "btnSearchOccurrences";
-            this.btnSearchOccurrences.Size = new System.Drawing.Size(165, 23);
+            this.btnSearchOccurrences.Size = new System.Drawing.Size(67, 23);
             this.btnSearchOccurrences.TabIndex = 4;
-            this.btnSearchOccurrences.Text = "Search for All Occurrences";
+            this.btnSearchOccurrences.Text = "Suche";
             this.btnSearchOccurrences.UseVisualStyleBackColor = true;
             this.btnSearchOccurrences.Click += new System.EventHandler(this.btnSearchOccurrences_Click);
             // 

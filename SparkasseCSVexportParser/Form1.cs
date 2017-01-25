@@ -13,6 +13,7 @@ namespace SparkasseCSVexportParser {
     public partial class Form1 : Form {
 
         List<SparkasseEntry> list;
+        string[] header;
 
         public Form1 () {
             InitializeComponent();
@@ -22,7 +23,7 @@ namespace SparkasseCSVexportParser {
 
         private void btnOpenFile_Click ( object sender, EventArgs e ) {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "CSV File|*.csv";
+            ofd.Filter = "CSV File|*.csv|All Files|*.*";
             if ( ofd.ShowDialog() == DialogResult.OK ) {
                 txtFileName.Text = ofd.FileName;
                 parseCSVFile( ofd.FileName );
@@ -78,11 +79,13 @@ namespace SparkasseCSVexportParser {
         }
 
         private void setListViewHeader ( string line ) {
-            string[] columns = line.Split( new char[] {';', '\"'}, StringSplitOptions.RemoveEmptyEntries );
+            header = line.Split( new char[] {';', '\"'}, StringSplitOptions.RemoveEmptyEntries );
 
-            foreach ( var item in columns ) {
+            foreach ( var item in header ) {
                 lvData.Columns.Add( item, -2 );
             }
+
+            lvData.Columns[0].Width = 90;
         }
 
         private void btnExit_Click ( object sender, EventArgs e ) {
@@ -90,7 +93,13 @@ namespace SparkasseCSVexportParser {
         }
 
         private void btnSearchOccurrences_Click ( object sender, EventArgs e ) {
-
+            if ( txtFileName.Text != string.Empty ) {
+                new SearchOccurrForm( list, header ).Show();
+            } else {
+                MessageBox.Show( "Öffne erst eine Datei" );
+            }
         }
+
+
     }
 }

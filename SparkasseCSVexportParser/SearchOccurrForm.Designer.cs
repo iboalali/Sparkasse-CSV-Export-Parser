@@ -37,23 +37,24 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearchBox.Location = new System.Drawing.Point(12, 14);
             this.txtSearchBox.Name = "txtSearchBox";
-            this.txtSearchBox.Size = new System.Drawing.Size(329, 20);
+            this.txtSearchBox.Size = new System.Drawing.Size(625, 20);
             this.txtSearchBox.TabIndex = 0;
             // 
             // btnSearch
             // 
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.Location = new System.Drawing.Point(347, 12);
+            this.btnSearch.Location = new System.Drawing.Point(643, 12);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 1;
-            this.btnSearch.Text = "Search";
+            this.btnSearch.Text = "Suche";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtTotalAmount
             // 
             this.txtTotalAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTotalAmount.Location = new System.Drawing.Point(347, 341);
+            this.txtTotalAmount.Location = new System.Drawing.Point(643, 341);
             this.txtTotalAmount.Name = "txtTotalAmount";
             this.txtTotalAmount.Size = new System.Drawing.Size(75, 20);
             this.txtTotalAmount.TabIndex = 2;
@@ -61,7 +62,7 @@
             // txtTotalOccurrence
             // 
             this.txtTotalOccurrence.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTotalOccurrence.Location = new System.Drawing.Point(266, 341);
+            this.txtTotalOccurrence.Location = new System.Drawing.Point(562, 341);
             this.txtTotalOccurrence.Name = "txtTotalOccurrence";
             this.txtTotalOccurrence.Size = new System.Drawing.Size(75, 20);
             this.txtTotalOccurrence.TabIndex = 3;
@@ -73,7 +74,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvResult.Location = new System.Drawing.Point(12, 40);
             this.lvResult.Name = "lvResult";
-            this.lvResult.Size = new System.Drawing.Size(410, 295);
+            this.lvResult.Size = new System.Drawing.Size(706, 295);
             this.lvResult.TabIndex = 4;
             this.lvResult.UseCompatibleStateImageBehavior = false;
             // 
@@ -89,7 +90,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 373);
+            this.ClientSize = new System.Drawing.Size(730, 373);
             this.Controls.Add(this.cbFilter);
             this.Controls.Add(this.lvResult);
             this.Controls.Add(this.txtTotalOccurrence);
@@ -97,7 +98,7 @@
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearchBox);
             this.Name = "SearchOccurrForm";
-            this.Text = "Search Occurrences";
+            this.Text = "Suche";
             this.ResumeLayout(false);
             this.PerformLayout();
 
