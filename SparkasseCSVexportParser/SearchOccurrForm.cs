@@ -39,547 +39,87 @@ namespace SparkasseCSVexportParser {
 
             AddColumns(choice);
 
-            /*
+            Search(searchTerm, choice);
+        }
+
+        private void Search (string searchTerm, string choice) {
+            ListViewItem lvi;
+            float total = 0f;
+            int counter = 0;
+
             switch (choice) {
-                #region Auftragskonto
-                case "Auftragskonto":
-                    int r;
-                    bool succ = int.TryParse( searchTerm, out r );
-                    if (succ) {
-
-                        lvResult.Columns.Add("Buchungstag", -2);
-                        lvResult.Columns.Add("Valutadatum", -2);
-                        lvResult.Columns.Add("Buchungstext", -2);
-                        lvResult.Columns.Add("Verwendungszweck", -2);
-                        lvResult.Columns.Add("Begünstigter/Zahlungspflichtiger", -2);
-                        lvResult.Columns.Add("Kontonummer", -2);
-                        lvResult.Columns.Add("Bankleitzahl", -2);
-                        lvResult.Columns.Add("Betrag", -2);
-                        lvResult.Columns.Add("Währung", -2);
-                        lvResult.Columns.Add("Information", -2);
-                        lvResult.Columns.Add("Stadt", -2);
-                        lvResult.Columns.Add("Land", -2);
-                        lvResult.Columns.Add("TAN", -2);
-
-                        foreach (var item in list) {
-                            ListViewItem lvi;
-
-                            if (item.Auftragskonto == r) {
-                                lvi = new ListViewItem(new string[] {
-                                        item.Buchungstag,
-                                        item.Valutadatum,
-                                        item.Buchungstext,
-                                        item.Verwendungszweck,
-                                        item.Beguenstigter_Zahlungspflichtiger,
-                                        item.Kontonummer,
-                                        item.Bankleitzahl,
-                                        item.Betrag.ToString( "0.00", new System.Globalization.CultureInfo( "de-DE" )),
-                                        item.Waehrung,
-                                        item.Information,
-                                        item.Stadt,
-                                        item.Land,
-                                        item.TAN
-                                    }
-                                );
-                                lvResult.Items.Add(lvi);
-                            }
-                        }
-                    } else {
-                        MessageBox.Show("Der Wert muss eine gültige Zahl sein");
-                        return;
-                    }
-                    break;
-                #endregion
-                #region Buchungstag
-                case "Buchungstag":
-                    DateTime d;
-                    succ = DateTime.TryParse(searchTerm, out d);
-
-                    if (succ) {
-                        lvResult.Columns.Add("Auftragskonto", 90);
-                        lvResult.Columns.Add("Valutadatum", -2);
-                        lvResult.Columns.Add("Buchungstext", -2);
-                        lvResult.Columns.Add("Verwendungszweck", -2);
-                        lvResult.Columns.Add("Begünstigter/Zahlungspflichtiger", -2);
-                        lvResult.Columns.Add("Kontonummer", -2);
-                        lvResult.Columns.Add("Bankleitzahl", -2);
-                        lvResult.Columns.Add("Betrag", -2);
-                        lvResult.Columns.Add("Währung", -2);
-                        lvResult.Columns.Add("Information", -2);
-                        lvResult.Columns.Add("Stadt", -2);
-                        lvResult.Columns.Add("Land", -2);
-                        lvResult.Columns.Add("TAN", -2);
-
-                        foreach (var item in list) {
-                            ListViewItem lvi;
-
-                            if (item.Buchungstag == d.ToString("dd.MM.yyyy")) {
-                                lvi = new ListViewItem(new string[] {
-                                        item.Auftragskonto.ToString(),
-                                        item.Valutadatum,
-                                        item.Buchungstext,
-                                        item.Verwendungszweck,
-                                        item.Beguenstigter_Zahlungspflichtiger,
-                                        item.Kontonummer,
-                                        item.Bankleitzahl,
-                                        item.Betrag.ToString( "0.00", new System.Globalization.CultureInfo( "de-DE" )),
-                                        item.Waehrung,
-                                        item.Information,
-                                        item.Stadt,
-                                        item.Land,
-                                        item.TAN
-                                    }
-                                );
-                                lvResult.Items.Add(lvi);
-                            }
-                        }
-                    } else {
-                        MessageBox.Show("Der Wert muss eine gültiges Datum sein");
-                        return;
-                    }
-                    break;
-                #endregion
-                #region Valutadatum
-                case "Valutadatum":
-                    succ = DateTime.TryParse(searchTerm, out d);
-                    if (succ) {
-                        lvResult.Columns.Add("Auftragskonto", 90);
-                        lvResult.Columns.Add("Buchungstag", -2);
-                        lvResult.Columns.Add("Buchungstext", -2);
-                        lvResult.Columns.Add("Verwendungszweck", -2);
-                        lvResult.Columns.Add("Begünstigter/Zahlungspflichtiger", -2);
-                        lvResult.Columns.Add("Kontonummer", -2);
-                        lvResult.Columns.Add("Bankleitzahl", -2);
-                        lvResult.Columns.Add("Betrag", -2);
-                        lvResult.Columns.Add("Währung", -2);
-                        lvResult.Columns.Add("Information", -2);
-                        lvResult.Columns.Add("Stadt", -2);
-                        lvResult.Columns.Add("Land", -2);
-                        lvResult.Columns.Add("TAN", -2);
-
-                        foreach (var item in list) {
-                            ListViewItem lvi;
-
-                            if (item.Valutadatum == d.ToString("dd.MM.yyyy")) {
-                                lvi = new ListViewItem(new string[] {
-                                        item.Auftragskonto.ToString(),
-                                        item.Buchungstag,
-                                        item.Buchungstext,
-                                        item.Verwendungszweck,
-                                        item.Beguenstigter_Zahlungspflichtiger,
-                                        item.Kontonummer,
-                                        item.Bankleitzahl,
-                                        item.Betrag.ToString( "0.00", new System.Globalization.CultureInfo( "de-DE" )),
-                                        item.Waehrung,
-                                        item.Information,
-                                        item.Stadt,
-                                        item.Land,
-                                        item.TAN
-                                    }
-                                );
-                                lvResult.Items.Add(lvi);
-                            }
-                        }
-                    } else {
-                        MessageBox.Show("Der Wert muss eine gültiges Datum sein");
-                        return;
-                    }
-                    break;
-                #endregion
-                #region Buchungstext
-                case "Buchungstext":
-                    lvResult.Columns.Add("Auftragskonto", 90);
-                    lvResult.Columns.Add("Buchungstag", -2);
-                    lvResult.Columns.Add("Valutadatum", -2);
-                    lvResult.Columns.Add("Verwendungszweck", -2);
-                    lvResult.Columns.Add("Begünstigter/Zahlungspflichtiger", -2);
-                    lvResult.Columns.Add("Kontonummer", -2);
-                    lvResult.Columns.Add("Bankleitzahl", -2);
-                    lvResult.Columns.Add("Betrag", -2);
-                    lvResult.Columns.Add("Währung", -2);
-                    lvResult.Columns.Add("Information", -2);
-                    lvResult.Columns.Add("Stadt", -2);
-                    lvResult.Columns.Add("Land", -2);
-                    lvResult.Columns.Add("TAN", -2);
-
-                    foreach (var item in list) {
-                        ListViewItem lvi;
-
-                        if (item.Buchungstext == searchTerm) {
-                            lvi = new ListViewItem(new string[] {
-                                        item.Auftragskonto.ToString(),
-                                        item.Buchungstag,
-                                        item.Valutadatum,
-                                        item.Verwendungszweck,
-                                        item.Beguenstigter_Zahlungspflichtiger,
-                                        item.Kontonummer,
-                                        item.Bankleitzahl,
-                                        item.Betrag.ToString( "0.00", new System.Globalization.CultureInfo( "de-DE" )),
-                                        item.Waehrung,
-                                        item.Information,
-                                        item.Stadt,
-                                        item.Land,
-                                        item.TAN
-                                    }
-                            );
-                            lvResult.Items.Add(lvi);
-                        }
-                    }
-
-                    break;
-                #endregion
-                #region Verwendungszweck
                 case "Verwendungszweck":
-                    lvResult.Columns.Add("Auftragskonto", 90);
-                    lvResult.Columns.Add("Buchungstag", -2);
-                    lvResult.Columns.Add("Valutadatum", -2);
-                    lvResult.Columns.Add("Buchungstext", -2);
-                    lvResult.Columns.Add("Begünstigter/Zahlungspflichtiger", -2);
-                    lvResult.Columns.Add("Kontonummer", -2);
-                    lvResult.Columns.Add("Bankleitzahl", -2);
-                    lvResult.Columns.Add("Betrag", -2);
-                    lvResult.Columns.Add("Währung", -2);
-                    lvResult.Columns.Add("Information", -2);
-                    lvResult.Columns.Add("Stadt", -2);
-                    lvResult.Columns.Add("Land", -2);
-                    lvResult.Columns.Add("TAN", -2);
-
                     foreach (var item in list) {
-                        ListViewItem lvi;
-
-                        if (item.Verwendungszweck == searchTerm) {
+                        if (item.Verwendungszweck.Contains(searchTerm)) {
                             lvi = new ListViewItem(new string[] {
-                                        item.Auftragskonto.ToString(),
-                                        item.Buchungstag,
-                                        item.Valutadatum,
-                                        item.Buchungstext,
-                                        item.Beguenstigter_Zahlungspflichtiger,
-                                        item.Kontonummer,
-                                        item.Bankleitzahl,
-                                        item.Betrag.ToString( "0.00", new System.Globalization.CultureInfo( "de-DE" )),
-                                        item.Waehrung,
-                                        item.Information,
-                                        item.Stadt,
-                                        item.Land,
-                                        item.TAN
-                                    }
-                            );
+                                item.Auftragskonto.ToString(),
+                                item.Buchungstag,
+                                item.Valutadatum,
+                                item.Buchungstext,
+                                item.Beguenstigter_Zahlungspflichtiger,
+                                item.Kontonummer,
+                                item.Bankleitzahl,
+                                item.Betrag.ToString(),
+                                item.Waehrung,
+                                item.Information
+                            });
                             lvResult.Items.Add(lvi);
-                        }
-                    }
-                    break;
-                #endregion
-                #region Begünstigter/Zahlungspflichtiger
-                case "Begünstigter/Zahlungspflichtiger":
-                    lvResult.Columns.Add("Auftragskonto", 90);
-                    lvResult.Columns.Add("Buchungstag", -2);
-                    lvResult.Columns.Add("Valutadatum", -2);
-                    lvResult.Columns.Add("Buchungstext", -2);
-                    lvResult.Columns.Add("Verwendungszweck", -2);
-                    lvResult.Columns.Add("Kontonummer", -2);
-                    lvResult.Columns.Add("Bankleitzahl", -2);
-                    lvResult.Columns.Add("Betrag", -2);
-                    lvResult.Columns.Add("Währung", -2);
-                    lvResult.Columns.Add("Information", -2);
-                    lvResult.Columns.Add("Stadt", -2);
-                    lvResult.Columns.Add("Land", -2);
-                    lvResult.Columns.Add("TAN", -2);
-
-                    foreach (var item in list) {
-                        ListViewItem lvi;
-
-                        if (item.Beguenstigter_Zahlungspflichtiger == searchTerm) {
-                            lvi = new ListViewItem(new string[] {
-                                        item.Auftragskonto.ToString(),
-                                        item.Buchungstag,
-                                        item.Valutadatum,
-                                        item.Buchungstext,
-                                        item.Verwendungszweck,
-                                        item.Kontonummer,
-                                        item.Bankleitzahl,
-                                        item.Betrag.ToString( "0.00", new System.Globalization.CultureInfo( "de-DE" )),
-                                        item.Waehrung,
-                                        item.Information,
-                                        item.Stadt,
-                                        item.Land,
-                                        item.TAN
-                                    }
-                            );
-                            lvResult.Items.Add(lvi);
+                            total += item.Betrag;
+                            counter++;
                         }
                     }
 
+                    txtTotalAmount.Text = total.ToString() + " EUR";
+                    txtTotalOccurrence.Text = counter.ToString();
                     break;
-                #endregion
-                #region Kontonummer
+                case "Beguenstigter/Zahlungspflichtiger":
+                    foreach (var item in list) {
+                        if (item.Beguenstigter_Zahlungspflichtiger.Contains(searchTerm)) {
+                            lvi = new ListViewItem(new string[] {
+                                item.Auftragskonto.ToString(),
+                                item.Buchungstag,
+                                item.Valutadatum,
+                                item.Buchungstext,
+                                item.Verwendungszweck,
+                                item.Kontonummer,
+                                item.Bankleitzahl,
+                                item.Betrag.ToString(),
+                                item.Waehrung,
+                                item.Information
+                            });
+                            lvResult.Items.Add(lvi);
+                            total += item.Betrag;
+                            counter++;
+                        }
+                    }
+
+                    txtTotalAmount.Text = total.ToString() + " EUR";
+                    txtTotalOccurrence.Text = counter.ToString();
+
+                    break;
                 case "Kontonummer":
-                    lvResult.Columns.Add("Auftragskonto", 90);
-                    lvResult.Columns.Add("Buchungstag", -2);
-                    lvResult.Columns.Add("Valutadatum", -2);
-                    lvResult.Columns.Add("Buchungstext", -2);
-                    lvResult.Columns.Add("Verwendungszweck", -2);
-                    lvResult.Columns.Add("Begünstigter/Zahlungspflichtiger", -2);
-                    lvResult.Columns.Add("Bankleitzahl", -2);
-                    lvResult.Columns.Add("Betrag", -2);
-                    lvResult.Columns.Add("Währung", -2);
-                    lvResult.Columns.Add("Information", -2);
-                    lvResult.Columns.Add("Stadt", -2);
-                    lvResult.Columns.Add("Land", -2);
-                    lvResult.Columns.Add("TAN", -2);
-
-                    foreach (var item in list) {
-                        ListViewItem lvi;
-
-                        if (item.Kontonummer == searchTerm) {
-                            lvi = new ListViewItem(new string[] {
-                                        item.Auftragskonto.ToString(),
-                                        item.Buchungstag,
-                                        item.Valutadatum,
-                                        item.Buchungstext,
-                                        item.Verwendungszweck,
-                                        item.Beguenstigter_Zahlungspflichtiger,
-                                        item.Bankleitzahl,
-                                        item.Betrag.ToString( "0.00", new System.Globalization.CultureInfo( "de-DE" )),
-                                        item.Waehrung,
-                                        item.Information,
-                                        item.Stadt,
-                                        item.Land,
-                                        item.TAN
-                                    }
-                            );
-                            lvResult.Items.Add(lvi);
-                        }
-                    }
 
                     break;
-                #endregion
-                #region Bankleitzahl
-                case "Bankleitzahl":
-                    lvResult.Columns.Add("Auftragskonto", 90);
-                    lvResult.Columns.Add("Buchungstag", -2);
-                    lvResult.Columns.Add("Valutadatum", -2);
-                    lvResult.Columns.Add("Buchungstext", -2);
-                    lvResult.Columns.Add("Verwendungszweck", -2);
-                    lvResult.Columns.Add("Begünstigter/Zahlungspflichtiger", -2);
-                    lvResult.Columns.Add("Kontonummer", -2);
-                    lvResult.Columns.Add("Betrag", -2);
-                    lvResult.Columns.Add("Währung", -2);
-                    lvResult.Columns.Add("Information", -2);
-                    lvResult.Columns.Add("Stadt", -2);
-                    lvResult.Columns.Add("Land", -2);
-                    lvResult.Columns.Add("TAN", -2);
-
-                    foreach (var item in list) {
-                        ListViewItem lvi;
-
-                        if (item.Bankleitzahl == searchTerm) {
-                            lvi = new ListViewItem(new string[] {
-                                        item.Auftragskonto.ToString(),
-                                        item.Buchungstag,
-                                        item.Valutadatum,
-                                        item.Buchungstext,
-                                        item.Verwendungszweck,
-                                        item.Beguenstigter_Zahlungspflichtiger,
-                                        item.Kontonummer,
-                                        item.Betrag.ToString( "0.00", new System.Globalization.CultureInfo( "de-DE" )),
-                                        item.Waehrung,
-                                        item.Information,
-                                        item.Stadt,
-                                        item.Land,
-                                        item.TAN
-                                    }
-                            );
-                            lvResult.Items.Add(lvi);
-                        }
-                    }
+                case "Info":
 
                     break;
-                #endregion
-                #region Betrag
-                case "Betrag":
-                    float f;
-                    succ = float.TryParse(searchTerm, out f);
-
-                    if (succ) {
-                        lvResult.Columns.Add("Auftragskonto", 90);
-                        lvResult.Columns.Add("Buchungstag", -2);
-                        lvResult.Columns.Add("Valutadatum", -2);
-                        lvResult.Columns.Add("Buchungstext", -2);
-                        lvResult.Columns.Add("Verwendungszweck", -2);
-                        lvResult.Columns.Add("Begünstigter/Zahlungspflichtiger", -2);
-                        lvResult.Columns.Add("Kontonummer", -2);
-                        lvResult.Columns.Add("Bankleitzahl", -2);
-                        lvResult.Columns.Add("Währung", -2);
-                        lvResult.Columns.Add("Information", -2);
-                        lvResult.Columns.Add("Stadt", -2);
-                        lvResult.Columns.Add("Land", -2);
-                        lvResult.Columns.Add("TAN", -2);
-
-                        foreach (var item in list) {
-                            ListViewItem lvi;
-
-                            if (item.Betrag == f) {
-                                lvi = new ListViewItem(new string[] {
-                                        item.Auftragskonto.ToString(),
-                                        item.Buchungstag,
-                                        item.Valutadatum,
-                                        item.Buchungstext,
-                                        item.Verwendungszweck,
-                                        item.Beguenstigter_Zahlungspflichtiger,
-                                        item.Kontonummer,
-                                        item.Bankleitzahl,
-                                        item.Waehrung,
-                                        item.Information,
-                                        item.Stadt,
-                                        item.Land,
-                                        item.TAN
-                                    }
-                                );
-                                lvResult.Items.Add(lvi);
-                            }
-                        }
-                    }
+                case "Waehrung":
 
                     break;
-                #endregion
-                #region Währung
-                case "Währung":
-                    lvResult.Columns.Add("Auftragskonto", 90);
-                    lvResult.Columns.Add("Buchungstag", -2);
-                    lvResult.Columns.Add("Valutadatum", -2);
-                    lvResult.Columns.Add("Buchungstext", -2);
-                    lvResult.Columns.Add("Verwendungszweck", -2);
-                    lvResult.Columns.Add("Begünstigter/Zahlungspflichtiger", -2);
-                    lvResult.Columns.Add("Kontonummer", -2);
-                    lvResult.Columns.Add("Bankleitzahl", -2);
-                    lvResult.Columns.Add("Betrag", -2);
-                    lvResult.Columns.Add("Information", -2);
-                    lvResult.Columns.Add("Stadt", -2);
-                    lvResult.Columns.Add("Land", -2);
-                    lvResult.Columns.Add("TAN", -2);
-
-                    foreach (var item in list) {
-                        ListViewItem lvi;
-
-                        if (item.Waehrung == searchTerm) {
-                            lvi = new ListViewItem(new string[] {
-                                        item.Auftragskonto.ToString(),
-                                        item.Buchungstag,
-                                        item.Valutadatum,
-                                        item.Buchungstext,
-                                        item.Verwendungszweck,
-                                        item.Beguenstigter_Zahlungspflichtiger,
-                                        item.Kontonummer,
-                                        item.Bankleitzahl,
-                                        item.Betrag.ToString( "0.00", new System.Globalization.CultureInfo( "de-DE" )),
-                                        item.Information,
-                                        item.Stadt,
-                                        item.Land,
-                                        item.TAN
-                                    }
-                            );
-                            lvResult.Items.Add(lvi);
-                        }
-                    }
+                case "BLZ":
 
                     break;
-                #endregion
-                #region Information
-                case "Information":
-                    lvResult.Columns.Add("Auftragskonto", 90);
-                    lvResult.Columns.Add("Buchungstag", -2);
-                    lvResult.Columns.Add("Valutadatum", -2);
-                    lvResult.Columns.Add("Buchungstext", -2);
-                    lvResult.Columns.Add("Verwendungszweck", -2);
-                    lvResult.Columns.Add("Begünstigter/Zahlungspflichtiger", -2);
-                    lvResult.Columns.Add("Kontonummer", -2);
-                    lvResult.Columns.Add("Bankleitzahl", -2);
-                    lvResult.Columns.Add("Betrag", -2);
-                    lvResult.Columns.Add("Währung", -2);
-                    lvResult.Columns.Add("Stadt", -2);
-                    lvResult.Columns.Add("Land", -2);
-                    lvResult.Columns.Add("TAN", -2);
+                case "Buchugstext":
 
                     break;
-                #endregion
-                #region Stadt
-                case "Stadt":
-                    lvResult.Columns.Add("Auftragskonto", 90);
-                    lvResult.Columns.Add("Buchungstag", -2);
-                    lvResult.Columns.Add("Valutadatum", -2);
-                    lvResult.Columns.Add("Buchungstext", -2);
-                    lvResult.Columns.Add("Verwendungszweck", -2);
-                    lvResult.Columns.Add("Begünstigter/Zahlungspflichtiger", -2);
-                    lvResult.Columns.Add("Kontonummer", -2);
-                    lvResult.Columns.Add("Bankleitzahl", -2);
-                    lvResult.Columns.Add("Betrag", -2);
-                    lvResult.Columns.Add("Währung", -2);
-                    lvResult.Columns.Add("Information", -2);
-                    lvResult.Columns.Add("Land", -2);
-                    lvResult.Columns.Add("TAN", -2);
-
-                    break;
-                #endregion
-                #region Land
-                case "Land":
-                    lvResult.Columns.Add("Auftragskonto", 90);
-                    lvResult.Columns.Add("Buchungstag", -2);
-                    lvResult.Columns.Add("Valutadatum", -2);
-                    lvResult.Columns.Add("Buchungstext", -2);
-                    lvResult.Columns.Add("Verwendungszweck", -2);
-                    lvResult.Columns.Add("Begünstigter/Zahlungspflichtiger", -2);
-                    lvResult.Columns.Add("Kontonummer", -2);
-                    lvResult.Columns.Add("Bankleitzahl", -2);
-                    lvResult.Columns.Add("Betrag", -2);
-                    lvResult.Columns.Add("Währung", -2);
-                    lvResult.Columns.Add("Information", -2);
-                    lvResult.Columns.Add("Stadt", -2);
-                    lvResult.Columns.Add("TAN", -2);
-
-                    break;
-                #endregion
-                #region TAN
-                case "TAN":
-                    lvResult.Columns.Add("Auftragskonto", 90);
-                    lvResult.Columns.Add("Buchungstag", -2);
-                    lvResult.Columns.Add("Valutadatum", -2);
-                    lvResult.Columns.Add("Buchungstext", -2);
-                    lvResult.Columns.Add("Verwendungszweck", -2);
-                    lvResult.Columns.Add("Begünstigter/Zahlungspflichtiger", -2);
-                    lvResult.Columns.Add("Kontonummer", -2);
-                    lvResult.Columns.Add("Bankleitzahl", -2);
-                    lvResult.Columns.Add("Betrag", -2);
-                    lvResult.Columns.Add("Währung", -2);
-                    lvResult.Columns.Add("Information", -2);
-                    lvResult.Columns.Add("Stadt", -2);
-                    lvResult.Columns.Add("Land", -2);
-
-                    break;
-                #endregion
-                #region All
-                case "All":
-                    lvResult.Columns.Add("Auftragskonto", 90);
-                    lvResult.Columns.Add("Buchungstag", -2);
-                    lvResult.Columns.Add("Valutadatum", -2);
-                    lvResult.Columns.Add("Buchungstext", -2);
-                    lvResult.Columns.Add("Verwendungszweck", -2);
-                    lvResult.Columns.Add("Begünstigter/Zahlungspflichtiger", -2);
-                    lvResult.Columns.Add("Kontonummer", -2);
-                    lvResult.Columns.Add("Bankleitzahl", -2);
-                    lvResult.Columns.Add("Betrag", -2);
-                    lvResult.Columns.Add("Währung", -2);
-                    lvResult.Columns.Add("Information", -2);
-                    lvResult.Columns.Add("Stadt", -2);
-                    lvResult.Columns.Add("Land", -2);
-                    lvResult.Columns.Add("TAN", -2);
-
-                    break;
-                #endregion
                 default:
                     break;
             }
 
-            */
+            for (int i = 0; i < lvResult.Columns.Count; i++) {
+                lvResult.Columns[i].AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
+            }
+
         }
 
         private void AddColumns (string exludeHeader) {
